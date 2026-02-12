@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Undangan Pernikahan - Bela & Candra</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -16,12 +16,17 @@
             --glass-bg: rgba(255, 255, 255, 0.03);
         }
 
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         body {
             background-color: var(--dark-bg);
             color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             overflow-x: hidden;
+            width: 100%;
         }
 
         .font-serif { font-family: 'Cormorant Garamond', serif; }
@@ -38,7 +43,7 @@
         #cover {
             position: fixed;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200');
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1200');
             background-size: cover;
             background-position: center;
             z-index: 2000;
@@ -50,10 +55,10 @@
         .cover-open { transform: translateY(-100%); }
 
         .photo-arch {
-            width: 220px;
-            height: 300px;
-            border-radius: 110px 110px 0 0;
-            border: 3px solid var(--accent-gold);
+            width: 180px;
+            height: 250px;
+            border-radius: 90px 90px 0 0;
+            border: 2px solid var(--accent-gold);
             overflow: hidden;
             margin: 0 auto 20px;
             box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
@@ -61,46 +66,48 @@
 
         .nav-bar {
             position: fixed;
-            bottom: 20px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: #0f0f0f;
+            background: rgba(15, 15, 15, 0.9);
             backdrop-filter: blur(10px);
-            padding: 8px 12px;
-            border-radius: 25px;
+            padding: 6px 10px;
+            border-radius: 30px;
             display: flex;
-            gap: 12px;
+            gap: 5px;
             z-index: 1000;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: fit-content;
+            max-width: 95%;
         }
 
         .nav-btn {
-            width: 42px;
-            height: 42px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #555;
-            font-size: 16px;
+            color: #777;
+            font-size: 13px;
             transition: all 0.3s;
             border-radius: 50%;
         }
-        .nav-btn.active { color: var(--accent-gold); background: rgba(212, 175, 55, 0.1); }
+        .nav-btn.active { color: var(--accent-gold); background: rgba(212, 175, 55, 0.15); }
 
         .card-elegant {
             background: #0a0a0a;
             border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 30px;
-            padding: 35px 25px;
+            border-radius: 25px;
+            padding: 30px 20px;
             position: relative;
         }
 
         .timer-box {
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            padding: 12px 5px;
-            border-radius: 12px;
-            min-width: 65px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 4px;
+            border-radius: 10px;
+            min-width: 60px;
             background: rgba(255,255,255,0.02);
         }
 
@@ -108,22 +115,23 @@
             background: linear-gradient(135deg, #d4af37 0%, #f1d592 50%, #d4af37 100%);
             color: #000;
             font-weight: 700;
-            padding: 14px 35px;
+            padding: 12px 28px;
             border-radius: 50px;
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2);
+            display: inline-block;
         }
 
         .audio-btn {
             position: fixed;
-            bottom: 85px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            background: #0f0f0f;
+            bottom: 75px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(15, 15, 15, 0.8);
             border: 1px solid var(--accent-gold);
             border-radius: 50%;
             display: flex;
@@ -134,14 +142,55 @@
             cursor: pointer;
         }
 
-        .max-mobile { max-width: 450px; margin: 0 auto; }
+        /* Timeline Styles */
+        .story-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+            opacity: 0.3;
+        }
+
+        .story-item {
+            position: relative;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .story-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--dark-bg);
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* Responsive Wrapper */
+        .max-mobile { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            padding: 0;
+            position: relative;
+        }
 
         .gold-line {
             height: 1px;
             background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
             width: 100%;
-            margin: 20px 0;
+            margin: 15px 0;
             opacity: 0.5;
+        }
+
+        section {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -151,15 +200,15 @@
 
     <!-- Cover Section -->
     <div id="cover">
-        <div class="text-center px-6">
-            <p class="font-serif italic text-white/70 mb-5 tracking-widest" data-aos="fade-down">THE WEDDING CELEBRATION OF</p>
+        <div class="text-center px-6 w-full max-w-xs">
+            <p class="font-serif italic text-white/70 mb-4 tracking-widest text-xs" data-aos="fade-down">THE WEDDING CELEBRATION OF</p>
             <div class="photo-arch" data-aos="zoom-in" data-aos-delay="300">
                 <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500" class="w-full h-full object-cover" alt="Mempelai">
             </div>
-            <h1 class="font-cursive text-7xl text-white mb-6" data-aos="fade-up" data-aos-delay="600">Bela & Candra</h1>
-            <div class="mb-10" data-aos="fade-up" data-aos-delay="800">
-                <p class="text-[10px] uppercase tracking-[0.4em] text-white/50 mb-3">Spesial Untuk Bapak/Ibu/Saudara/i</p>
-                <h2 id="guest-name" class="text-2xl font-serif font-bold text-white mb-8 tracking-wider">Tamu Undangan</h2>
+            <h1 class="font-cursive text-6xl text-white mb-4" data-aos="fade-up" data-aos-delay="600">Bela & Candra</h1>
+            <div class="mb-6" data-aos="fade-up" data-aos-delay="800">
+                <p class="text-[9px] uppercase tracking-[0.3em] text-white/50 mb-2">Spesial Untuk Bapak/Ibu/Saudara/i</p>
+                <h2 id="guest-name" class="text-xl font-serif font-bold text-white mb-8 tracking-wider">Tamu Undangan</h2>
                 <button onclick="openInv()" class="btn-gold"><i class="fas fa-envelope-open mr-2"></i> Buka Undangan</button>
             </div>
         </div>
@@ -177,6 +226,7 @@
     <div class="nav-bar">
         <a href="#hero" class="nav-btn active"><i class="fas fa-home"></i></a>
         <a href="#couple" class="nav-btn"><i class="fas fa-heart"></i></a>
+        <a href="#story" class="nav-btn"><i class="fas fa-book-open"></i></a>
         <a href="#event" class="nav-btn"><i class="fas fa-calendar-alt"></i></a>
         <a href="#gallery" class="nav-btn"><i class="fas fa-image"></i></a>
         <a href="#wishes" class="nav-btn"><i class="fas fa-comment-dots"></i></a>
@@ -185,150 +235,195 @@
     <div class="max-mobile">
         
         <!-- Hero / Countdown -->
-        <section id="hero" class="min-h-screen flex flex-col justify-center px-8 text-center pt-10">
+        <section id="hero" class="min-h-screen flex flex-col justify-center px-6 text-center pt-8">
             <div data-aos="fade-up">
-                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2YtcmF3cGl4ZWwtZmxvcmFsLWVsZW1lbnRzLTM2NC1qb2I3NDUucG5n.png" class="w-24 mx-auto mb-8 opacity-40" style="filter: brightness(10) contrast(1);" data-aos="zoom-in">
-                <p class="font-serif italic text-2xl text-accent-gold mb-2" data-aos="fade-right">The Wedding Of</p>
-                <h2 class="font-cursive text-7xl mb-8" data-aos="fade-left">Bela & Candra</h2>
+                <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2YtcmF3cGl4ZWwtZmxvcmFsLWVsZW1lbnRzLTM2NC1qb2I3NDUucG5n.png" class="w-20 mx-auto mb-6 opacity-40" style="filter: brightness(10) contrast(1);" data-aos="zoom-in">
+                <p class="font-serif italic text-xl text-accent-gold mb-2" data-aos="fade-right">The Wedding Of</p>
+                <h2 class="font-cursive text-6xl mb-6" data-aos="fade-left">Bela & Candra</h2>
                 
-                <div class="mb-12" data-aos="zoom-out">
-                    <p class="font-serif tracking-[0.5em] text-sm text-white/60 mb-2 uppercase">Sabtu</p>
+                <div class="mb-10" data-aos="zoom-out">
+                    <p class="font-serif tracking-[0.4em] text-[10px] text-white/60 mb-1 uppercase">Sabtu</p>
                     <div class="gold-line"></div>
-                    <p class="text-3xl font-bold tracking-[0.2em]">25 . 10 . 2026</p>
+                    <p class="text-2xl font-bold tracking-[0.2em]">25 . 10 . 2026</p>
                     <div class="gold-line"></div>
                 </div>
 
                 <!-- Timer -->
-                <div class="flex justify-center gap-3 mb-12" data-aos="fade-up">
-                    <div class="timer-box"><span id="d" class="block text-2xl font-bold">0</span><span class="text-[8px] uppercase tracking-tighter">Hari</span></div>
-                    <div class="timer-box"><span id="h" class="block text-2xl font-bold">0</span><span class="text-[8px] uppercase tracking-tighter">Jam</span></div>
-                    <div class="timer-box"><span id="m" class="block text-2xl font-bold">0</span><span class="text-[8px] uppercase tracking-tighter">Menit</span></div>
-                    <div class="timer-box"><span id="s" class="block text-2xl font-bold">0</span><span class="text-[8px] uppercase tracking-tighter">Detik</span></div>
+                <div class="flex justify-center gap-2 mb-10" data-aos="fade-up">
+                    <div class="timer-box"><span id="d" class="block text-xl font-bold">00</span><span class="text-[7px] uppercase tracking-tighter">Hari</span></div>
+                    <div class="timer-box"><span id="h" class="block text-xl font-bold">00</span><span class="text-[7px] uppercase tracking-tighter">Jam</span></div>
+                    <div class="timer-box"><span id="m" class="block text-xl font-bold">00</span><span class="text-[7px] uppercase tracking-tighter">Menit</span></div>
+                    <div class="timer-box"><span id="s" class="block text-xl font-bold">00</span><span class="text-[7px] uppercase tracking-tighter">Detik</span></div>
                 </div>
 
-                <div class="text-xs italic text-white/50 leading-relaxed px-6" data-aos="fade-up">
+                <div class="text-[10px] italic text-white/50 leading-relaxed px-4" data-aos="fade-up">
                     "Dan di antara tanda-tanda (kebesaran)-Nya adalah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..."
-                    <p class="mt-3 font-bold text-accent-gold tracking-widest uppercase text-[10px]">( Ar-Ruum: 21 )</p>
+                    <p class="mt-2 font-bold text-accent-gold tracking-widest uppercase text-[9px]">( Ar-Ruum: 21 )</p>
                 </div>
             </div>
         </section>
 
         <!-- Couple Section -->
-        <section id="couple" class="py-20 px-6 text-center">
-            <div data-aos="fade-right" class="mb-24">
-                <div class="photo-arch w-52 h-72" data-aos="zoom-in-right">
-                    <img src="foto (1).jpg" class="w-full h-full object-cover">
+        <section id="couple" class="py-16 px-6 text-center">
+            <div data-aos="fade-right" class="mb-16">
+                <div class="photo-arch w-44 h-60" data-aos="zoom-in-right">
+                    <img src="foto (1).jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400'">
                 </div>
-                <h3 class="font-cursive text-5xl mb-3 text-accent-gold">Candra Wijaya</h3>
-                <p class="text-[9px] tracking-[0.4em] text-white/40 mb-4 uppercase">Putra Pertama Dari:</p>
-                <p class="font-serif text-lg italic text-white/80">Bapak Wijaya & Ibu Ratna</p>
+                <h3 class="font-cursive text-4xl mb-2 text-accent-gold">Candra Wijaya</h3>
+                <p class="text-[8px] tracking-[0.3em] text-white/40 mb-3 uppercase">Putra Pertama Dari:</p>
+                <p class="font-serif text-base italic text-white/80">Bapak Wijaya & Ibu Ratna</p>
             </div>
 
-            <div class="text-4xl font-cursive my-12 text-accent-gold opacity-50" data-aos="zoom-in">&</div>
+            <div class="text-3xl font-cursive my-8 text-accent-gold opacity-50" data-aos="zoom-in">&</div>
 
             <div data-aos="fade-left">
-                <div class="photo-arch w-52 h-72" data-aos="zoom-in-left">
-                    <img src="foto (2).jpg" class="w-full h-full object-cover">
+                <div class="photo-arch w-44 h-60" data-aos="zoom-in-left">
+                    <img src="foto (2).jpg" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400'">
                 </div>
-                <h3 class="font-cursive text-5xl mb-3 text-accent-gold">Bela Adelia</h3>
-                <p class="text-[9px] tracking-[0.4em] text-white/40 mb-4 uppercase">Putri Kedua Dari:</p>
-                <p class="font-serif text-lg italic text-white/80">Bapak Adeliawan & Ibu Setyawati</p>
+                <h3 class="font-cursive text-4xl mb-2 text-accent-gold">Bela Adelia</h3>
+                <p class="text-[8px] tracking-[0.3em] text-white/40 mb-3 uppercase">Putri Kedua Dari:</p>
+                <p class="font-serif text-base italic text-white/80">Bapak Adeliawan & Ibu Setyawati</p>
+            </div>
+        </section>
+
+        <!-- Love Story Section -->
+        <section id="story" class="py-16 px-6">
+            <h2 class="font-cursive text-5xl text-center mb-12 text-accent-gold" data-aos="fade-down">Love Story</h2>
+            
+            <div class="story-container relative">
+                <!-- Pertama Kali Bertemu -->
+                <div class="story-item" data-aos="fade-right">
+                    <div class="story-dot"></div>
+                    <div class="card-elegant mt-6 ml-4">
+                        <span class="text-accent-gold font-serif italic text-xs block mb-2">Januari 2022</span>
+                        <h4 class="font-bold text-sm tracking-widest mb-2 uppercase">Pertemuan Pertama</h4>
+                        <p class="text-[10px] text-white/60 leading-relaxed italic">Takdir mempertemukan kami di sebuah perpustakaan kota. Sebuah percakapan singkat tentang buku favorit menjadi awal dari segalanya.</p>
+                    </div>
+                </div>
+
+                <!-- Jadian -->
+                <div class="story-item" data-aos="fade-left">
+                    <div class="story-dot"></div>
+                    <div class="card-elegant mt-6 mr-4">
+                        <span class="text-accent-gold font-serif italic text-xs block mb-2">Mei 2023</span>
+                        <h4 class="font-bold text-sm tracking-widest mb-2 uppercase">Menjalin Kasih</h4>
+                        <p class="text-[10px] text-white/60 leading-relaxed italic">Kami memutuskan untuk melangkah bersama, saling mendukung mimpi, dan mengisi hari-hari dengan tawa serta doa.</p>
+                    </div>
+                </div>
+
+                <!-- Lamaran -->
+                <div class="story-item" data-aos="fade-right">
+                    <div class="story-dot"></div>
+                    <div class="card-elegant mt-6 ml-4">
+                        <span class="text-accent-gold font-serif italic text-xs block mb-2">Agustus 2025</span>
+                        <h4 class="font-bold text-sm tracking-widest mb-2 uppercase">Lamaran (Engaged)</h4>
+                        <p class="text-[10px] text-white/60 leading-relaxed italic">Di hadapan kedua keluarga, kami mengikat janji suci untuk melangkah ke jenjang yang lebih serius dalam ikatan pernikahan.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Event Section -->
-        <section id="event" class="py-20 px-6">
-            <h2 class="font-cursive text-6xl text-center mb-16" data-aos="fade-down">Acara Kami</h2>
+        <section id="event" class="py-16 px-5">
+            <h2 class="font-cursive text-5xl text-center mb-12 text-accent-gold" data-aos="fade-down">Acara Kami</h2>
             
-            <div class="space-y-12">
+            <div class="space-y-10">
                 <div class="card-elegant text-center" data-aos="flip-left">
-                    <h3 class="font-serif text-3xl mb-6 tracking-widest text-accent-gold">AKAD NIKAH</h3>
-                    <div class="flex justify-center gap-8 mb-8">
-                        <div class="text-center"><p class="text-[9px] uppercase tracking-widest text-white/40 mb-1">Hari</p><p class="text-xl font-bold">Sabtu</p></div>
+                    <h3 class="font-serif text-2xl mb-5 tracking-widest text-accent-gold uppercase">AKAD NIKAH</h3>
+                    <div class="flex justify-center gap-6 mb-6">
+                        <div class="text-center"><p class="text-[8px] uppercase tracking-widest text-white/40 mb-1">Hari</p><p class="text-lg font-bold">Sabtu</p></div>
                         <div class="w-[1px] bg-accent-gold/30"></div>
-                        <div class="text-center"><p class="text-[9px] uppercase tracking-widest text-white/40 mb-1">Tanggal</p><p class="text-xl font-bold">25 . 10</p></div>
+                        <div class="text-center"><p class="text-[8px] uppercase tracking-widest text-white/40 mb-1">Tanggal</p><p class="text-lg font-bold">25 . 10</p></div>
                         <div class="w-[1px] bg-accent-gold/30"></div>
-                        <div class="text-center"><p class="text-[9px] uppercase tracking-widest text-white/40 mb-1">Jam</p><p class="text-xl font-bold">09:00</p></div>
+                        <div class="text-center"><p class="text-[8px] uppercase tracking-widest text-white/40 mb-1">Jam</p><p class="text-lg font-bold">09:00</p></div>
                     </div>
-                    <p class="text-sm font-serif mb-10 leading-relaxed text-white/80">Masjid Agung Al-Barkah<br><span class="text-xs text-white/40 italic">Jl. Sudirman No. 10, Jakarta Pusat</span></p>
-                    <a href="#" class="btn-gold"><i class="fas fa-map-marker-alt mr-2"></i> Buka Google Maps</a>
+                    <p class="text-xs font-serif mb-8 leading-relaxed text-white/80 px-2">Masjid Agung Al-Barkah<br><span class="text-[10px] text-white/40 italic">Jl. Sudirman No. 10, Jakarta Pusat</span></p>
+                    <a href="#" class="btn-gold"><i class="fas fa-map-marker-alt mr-2"></i> Maps</a>
                 </div>
 
                 <div class="card-elegant text-center" data-aos="flip-right">
-                    <h3 class="font-serif text-3xl mb-6 tracking-widest text-accent-gold">RESEPSI</h3>
-                    <div class="flex justify-center gap-8 mb-8">
-                        <div class="text-center"><p class="text-[9px] uppercase tracking-widest text-white/40 mb-1">Hari</p><p class="text-xl font-bold">Sabtu</p></div>
+                    <h3 class="font-serif text-2xl mb-5 tracking-widest text-accent-gold uppercase">RESEPSI</h3>
+                    <div class="flex justify-center gap-6 mb-6">
+                        <div class="text-center"><p class="text-[8px] uppercase tracking-widest text-white/40 mb-1">Hari</p><p class="text-lg font-bold">Sabtu</p></div>
                         <div class="w-[1px] bg-accent-gold/30"></div>
-                        <div class="text-center"><p class="text-[9px] uppercase tracking-widest text-white/40 mb-1">Tanggal</p><p class="text-xl font-bold">25 . 10</p></div>
+                        <div class="text-center"><p class="text-[8px] uppercase tracking-widest text-white/40 mb-1">Tanggal</p><p class="text-lg font-bold">25 . 10</p></div>
                         <div class="w-[1px] bg-accent-gold/30"></div>
-                        <div class="text-center"><p class="text-[9px] uppercase tracking-widest text-white/40 mb-1">Jam</p><p class="text-xl font-bold">11:00</p></div>
+                        <div class="text-center"><p class="text-[8px] uppercase tracking-widest text-white/40 mb-1">Jam</p><p class="text-lg font-bold">11:00</p></div>
                     </div>
-                    <p class="text-sm font-serif mb-10 leading-relaxed text-white/80">Gedung Pertemuan Kridha<br><span class="text-xs text-white/40 italic">Jl. Melati No. 45, Jakarta Selatan</span></p>
-                    <a href="#" class="btn-gold"><i class="fas fa-map-marker-alt mr-2"></i> Buka Google Maps</a>
+                    <p class="text-xs font-serif mb-8 leading-relaxed text-white/80 px-2">Gedung Pertemuan Kridha<br><span class="text-[10px] text-white/40 italic">Jl. Melati No. 45, Jakarta Selatan</span></p>
+                    <a href="#" class="btn-gold"><i class="fas fa-map-marker-alt mr-2"></i> Maps</a>
                 </div>
             </div>
         </section>
 
         <!-- Gallery -->
-        <section id="gallery" class="py-20 px-6">
-            <h2 class="font-cursive text-6xl text-center mb-16" data-aos="fade-down">Galeri Foto</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="rounded-3xl overflow-hidden h-64 border border-white/5 shadow-2xl" data-aos="zoom-in-up">
-                    <img src="foto (3).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+        <section id="gallery" class="py-16 px-5">
+            <h2 class="font-cursive text-5xl text-center mb-12 text-accent-gold" data-aos="fade-down">Galeri Foto</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="rounded-2xl overflow-hidden h-48 border border-white/5 shadow-xl" data-aos="zoom-in-up">
+                    <img src="foto (3).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400'">
                 </div>
-                <div class="rounded-3xl overflow-hidden h-56 mt-12 border border-white/5 shadow-2xl" data-aos="zoom-in-up" data-aos-delay="200">
-                    <img src="foto (3).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="rounded-2xl overflow-hidden h-40 mt-8 border border-white/5 shadow-xl" data-aos="zoom-in-up" data-aos-delay="200">
+                    <img src="foto (3).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400'">
                 </div>
-                <div class="rounded-3xl overflow-hidden h-56 -mt-12 border border-white/5 shadow-2xl" data-aos="zoom-in-up" data-aos-delay="400">
-                    <img src="foto (4).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="rounded-2xl overflow-hidden h-40 -mt-8 border border-white/5 shadow-xl" data-aos="zoom-in-up" data-aos-delay="400">
+                    <img src="foto (4).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=400'">
                 </div>
-                <div class="rounded-3xl overflow-hidden h-64 border border-white/5 shadow-2xl" data-aos="zoom-in-up" data-aos-delay="600">
-                    <img src="foto (5).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="rounded-2xl overflow-hidden h-48 border border-white/5 shadow-xl" data-aos="zoom-in-up" data-aos-delay="600">
+                    <img src="foto (5).jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='https://images.unsplash.com/photo-1465495910483-0d67450db998?w=400'">
                 </div>
             </div>
         </section>
 
         <!-- Wishes -->
-        <section id="wishes" class="py-20 px-6 pb-40">
+        <section id="wishes" class="py-16 px-5 pb-32">
             <div class="card-elegant" data-aos="fade-up">
-                <h2 class="font-serif text-3xl text-center mb-8 text-accent-gold uppercase tracking-widest">Guestbook</h2>
-                <form class="space-y-4 mb-10">
-                    <input type="text" placeholder="Nama Anda" class="w-full bg-white/5 p-4 rounded-xl border border-white/10 outline-none text-white text-sm focus:border-accent-gold/50">
-                    <textarea placeholder="Tuliskan ucapan & doa..." rows="3" class="w-full bg-white/5 p-4 rounded-xl border border-white/10 outline-none text-white text-sm focus:border-accent-gold/50"></textarea>
-                    <button class="btn-gold w-full py-4 font-bold">KIRIM UCAPAN</button>
+                <h2 class="font-serif text-2xl text-center mb-6 text-accent-gold uppercase tracking-widest">Guestbook</h2>
+                <form class="space-y-3 mb-8">
+                    <input type="text" id="wish-name" placeholder="Nama Anda" class="w-full bg-white/5 p-3 rounded-xl border border-white/10 outline-none text-white text-xs focus:border-accent-gold/50">
+                    <textarea id="wish-text" placeholder="Tuliskan ucapan & doa..." rows="3" class="w-full bg-white/5 p-3 rounded-xl border border-white/10 outline-none text-white text-xs focus:border-accent-gold/50"></textarea>
+                    <button type="button" class="btn-gold w-full py-3 font-bold">KIRIM UCAPAN</button>
                 </form>
-                <div class="space-y-4 max-h-72 overflow-y-auto pr-2 custom-scroll">
-                    <div class="p-5 bg-white/5 rounded-2xl border-l-2 border-accent-gold" data-aos="fade-left">
-                        <p class="font-bold text-accent-gold text-xs mb-2 uppercase tracking-widest">Riana Putri</p>
-                        <p class="italic text-white/60 text-xs leading-relaxed">"Selamat menempuh hidup baru untuk Bela & Candra! Semoga menjadi keluarga yang sakinah mawaddah warahmah. Bahagia selamanya ya!"</p>
+                <div class="space-y-3 max-h-60 overflow-y-auto pr-1 custom-scroll" id="wishes-container">
+                    <div class="p-4 bg-white/5 rounded-2xl border-l-2 border-accent-gold" data-aos="fade-left">
+                        <p class="font-bold text-accent-gold text-[10px] mb-1 uppercase tracking-widest">Riana Putri</p>
+                        <p class="italic text-white/60 text-[10px] leading-relaxed">"Selamat menempuh hidup baru untuk Bela & Candra! Semoga menjadi keluarga yang sakinah mawaddah warahmah. Bahagia selamanya ya!"</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="py-20 text-center opacity-30 text-[9px] tracking-[0.4em] uppercase" data-aos="fade-in">
-            &copy; 2025 Bela & Candra Wedding Invitation
+        <footer class="py-12 text-center opacity-30 text-[8px] tracking-[0.3em] uppercase" data-aos="fade-in">
+            &copy; 2026 Bela & Candra Wedding Invitation
         </footer>
 
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Inisialisasi AOS dengan durasi dan offset yang pas
         AOS.init({ 
             duration: 1000, 
             once: true,
-            offset: 100,
-            easing: 'ease-out-back'
+            offset: 50,
+            easing: 'ease-out'
         });
 
         const params = new URLSearchParams(window.location.search);
         if(params.get('to')) document.getElementById('guest-name').innerText = params.get('to');
 
+        // Prevent scrolling before open
+        document.body.style.overflow = 'hidden';
+
         function openInv() {
             document.getElementById('cover').classList.add('cover-open');
-            document.getElementById('bgm').play();
-            // Refresh AOS agar animasi di halaman utama terpicu tepat setelah cover terbuka
+            document.body.style.overflow = 'auto';
+            
+            // Audio play handling
+            const m = document.getElementById('bgm');
+            m.play().catch(() => {
+                console.log("Auto-play blocked");
+            });
+
             setTimeout(() => { 
                 AOS.refresh(); 
             }, 600);
@@ -337,8 +432,13 @@
         function toggleMusic() {
             const m = document.getElementById('bgm');
             const btn = document.getElementById('musicToggle');
-            if(m.paused) { m.play(); btn.innerHTML = '<i class="fas fa-music"></i>'; }
-            else { m.pause(); btn.innerHTML = '<i class="fas fa-volume-mute"></i>'; }
+            if(m.paused) { 
+                m.play(); 
+                btn.innerHTML = '<i class="fas fa-music"></i>'; 
+            } else { 
+                m.pause(); 
+                btn.innerHTML = '<i class="fas fa-volume-mute"></i>'; 
+            }
         }
 
         const target = new Date("Oct 25, 2026 09:00:00").getTime();
@@ -346,10 +446,10 @@
             const now = new Date().getTime();
             const d = target - now;
             if(d > 0) {
-                document.getElementById('d').innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-                document.getElementById('h').innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById('m').innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById('s').innerText = Math.floor((d % (1000 * 60)) / 1000);
+                document.getElementById('d').innerText = Math.floor(d / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById('h').innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById('m').innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById('s').innerText = Math.floor((d % (1000 * 60)) / 1000).toString().padStart(2, '0');
             }
         }, 1000);
 
@@ -357,10 +457,13 @@
             let current = "";
             const sections = document.querySelectorAll("section");
             const navBtn = document.querySelectorAll(".nav-btn");
-            sections.forEach((s) => { if (pageYOffset >= s.offsetTop - 200) current = s.getAttribute("id"); });
+            sections.forEach((s) => { 
+                const sectionTop = s.offsetTop;
+                if (pageYOffset >= sectionTop - 150) current = s.getAttribute("id"); 
+            });
             navBtn.forEach((b) => {
                 b.classList.remove("active");
-                if (b.href.includes(current)) b.classList.add("active");
+                if (b.getAttribute('href').includes(current)) b.classList.add("active");
             });
         });
     </script>
